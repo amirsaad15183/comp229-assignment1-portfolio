@@ -1,0 +1,37 @@
+# Assignment 2 - Remaining Tasks
+
+- Insert at least one record into each collection using Thunder Client:
+  - `contacts`
+  - `projects`
+  - `qualifications`
+  - `users`
+- Take a MongoDB Atlas screenshot showing:
+  - database `Portfolio`
+  - all required collections visible
+- Test and screenshot the required APIs in Thunder Client:
+  - contacts API requests
+  - projects API requests
+  - qualifications API requests
+  - users API requests
+  - authentication signin
+  - authentication protected route
+  - optional signout
+- Capture at least these successful Thunder Client screenshots:
+  - `POST /api/contacts`
+  - `GET /api/contacts`
+  - `POST /api/projects`
+  - `GET /api/projects`
+  - `POST /api/qualifications`
+  - `GET /api/qualifications`
+  - `POST /api/users`
+  - `GET /api/users`
+  - `POST /auth/signin`
+  - `GET /api/users/protected` with bearer token
+  - optional `GET /auth/signout`
+- Take a console screenshot showing:
+  - `Connected to the database!`
+- Optionally update the root server message to exactly match the assignment sample screenshot
+- Prepare final submission items:
+  - zip file
+  - GitHub link
+  - Word document with screenshots
