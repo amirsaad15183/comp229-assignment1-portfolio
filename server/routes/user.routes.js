@@ -4,9 +4,9 @@ import authCtrl from '../controllers/auth.controller.js'
 const router = express.Router()
 
 router.route('/api/users')
-    .get(userCtrl.list)
+    .get(authCtrl.requireSignin, authCtrl.requireAdmin, userCtrl.list)
     .post(userCtrl.create)
-    .delete(userCtrl.removeAll)
+    .delete(authCtrl.requireSignin, authCtrl.requireAdmin, userCtrl.removeAll)
 
 router.route('/api/users/protected')
     .get(authCtrl.requireSignin, userCtrl.protectedRoute)

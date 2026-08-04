@@ -2,11 +2,22 @@ import User from "../models/user.model.js";
 import extend from "lodash/extend.js";
 import errorHandler from "./error.controller.js";
 const create = async (req, res) => {
-    const user = new User(req.body);
+    const user = new User({
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        role: req.body.role === 'admin' ? 'admin' : 'user',
+    });
     try {
         await user.save();
         return res.status(200).json({
             message: "Successfully signed up!",
+            user: {
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                role: user.role,
+            }
         });
     } catch (err) {
         return res.status(400).json({
@@ -16,7 +27,7 @@ const create = async (req, res) => {
 };
 const list = async (req, res) => {
     try {
-        let users = await User.find().select("name email updated created");
+        let users = await User.find().select("name email role updated created");
         res.json(users);
     } catch (err) {
         return res.status(400).json({
@@ -49,6 +60,9 @@ const update = async (req, res) => {
         let user = req.profile;
         user = extend(user, req.body);
         user.updated = Date.now();
+        if (req.body.role && req.auth?.role === 'admin') {
+            user.role = req.body.role;
+        }
         await user.save();
         user.hashed_password = undefined;
         user.salt = undefined;

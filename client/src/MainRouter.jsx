@@ -6,6 +6,8 @@ import Projects from './project'
 import Education from './education'
 import Services from './services'
 import Contact from './contact'
+import SignIn from './signin'
+import SignUp from './signup'
 
 function MainRouter() {
   return (
@@ -18,6 +20,8 @@ function MainRouter() {
         <Route path="education" element={<Education />} />
         <Route path="services" element={<Services />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="signin" element={<SignIn />} />
+        <Route path="signup" element={<SignUp />} />
       </Route>
     </Routes>
   )

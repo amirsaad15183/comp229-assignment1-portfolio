@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import { portfolioOwner } from '../src/siteData'
+import { useAuth } from '../src/useAuth'
 
 const navItems = [
   { to: '/', label: 'Home', end: true },
@@ -11,6 +12,8 @@ const navItems = [
 ]
 
 export default function Layout() {
+  const { isAuthenticated, isAdmin, user, signOut } = useAuth()
+
   return (
     <div className="site-shell">
       <header className="site-header">
@@ -36,6 +39,28 @@ export default function Layout() {
             </NavLink>
           ))}
         </nav>
+
+        <div className="auth-nav">
+          {isAuthenticated ? (
+            <>
+              <span className="role-chip">
+                {user?.name} · {isAdmin ? 'Admin' : 'User'}
+              </span>
+              <button type="button" className="button ghost" onClick={signOut}>
+                Sign out
+              </button>
+            </>
+          ) : (
+            <>
+              <NavLink to="/signin" className="nav-link auth-link">
+                Sign in
+              </NavLink>
+              <NavLink to="/signup" className="button primary auth-button">
+                Sign up
+              </NavLink>
+            </>
+          )}
+        </div>
       </header>
 
       <main className="page-content">
