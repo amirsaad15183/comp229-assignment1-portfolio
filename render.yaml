@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: comp229-portfolio-backend
+    runtime: node
+    plan: free
+    rootDir: .
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: JWT_SECRET
+        sync: false
+      - key: MONGODB_URI
+        sync: false
+      - key: ADMIN_NAME
+        value: Amir Saad Admin
+      - key: ADMIN_EMAIL
+        value: asaad10@my.centennialcollege.ca
+      - key: ADMIN_PASSWORD
+        sync: false
