@@ -17,6 +17,11 @@ export const services = [
     icon: 'CPR',
   },
   {
+  title: 'Basic Life Support',
+  description: 'Training and practical support in essential life-saving techniques, patient safety awareness, and emergency response fundamentals.',
+  icon: 'BLS',
+  },
+  {
     title: 'AI Solution Design',
     description: 'Planning intelligent software ideas that connect machine learning, data analysis, and real-world healthcare needs.',
     icon: 'AI',
